@@ -35,9 +35,9 @@ int main()
 
     for (int i = 0; i < studentData2.size(); i++) {
         cout << studentData2[i].lastName << "," << studentData2[i].firstName << "," << studentData2[i].email << endl;
-    }
+    }  
 
 #endif 
-    
-        return 1;
+
+    return 1;
 } 
