@@ -1,20 +1,43 @@
-// CSCN73030_Assignment2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include <iostream> 
+#include <string> 
+#include <fstream> 
+#include <vector> 
 
-#include <iostream>
+using namespace std;
+
+//#define PRE_RELEASE 
+
+struct STUDENT_DATA {
+    string firstName;
+    string lastName;
+
+#ifdef PRE_RELEASE
+    string email;
+#endif
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
-}
+    STUDENT_DATA studentInformation;
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+#ifdef PRE_RELEASE 
+    cout << endl << endl << "Pre-Release code running" << endl << endl;
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    vector <STUDENT_DATA> studentData2;
+    ifstream file2("StudentData_Emails.txt");
+
+    while (getline(file2, studentInformation.lastName, ',') && getline(file2, studentInformation.firstName, ',') && getline(file2, studentInformation.email)) {
+        studentData2.push_back(studentInformation);
+    }
+
+    file2.close();
+
+    for (int i = 0; i < studentData2.size(); i++) {
+        cout << studentData2[i].lastName << "," << studentData2[i].firstName << "," << studentData2[i].email << endl;
+    }
+
+#endif 
+    
+        return 1;
+} 
